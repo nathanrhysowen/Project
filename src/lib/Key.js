@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 
 export default class Key {
-    constructor(keyName, xOffset){ //assigning two parameters to the constructor 
+    constructor(keyName, input, xOffset){ //assigning two parameters to the constructor 
         this.keyName = keyName; // assigning the keyName parameter to the keyName property 
         this.keyGroup = new THREE.Group(); //creating a group
         
@@ -22,7 +22,10 @@ export default class Key {
             this.mesh.position.x = xOffset; //moving the mesh along the x axis
             this.keyGroup.add(this.mesh);
         }
-        //transforming the mesh into a child of the keyGroup
+    }
+
+    playNote() {
+        this.mesh.material.color.set('0xff0000');
     }
     getKeyGroup() {
         return this.keyGroup //allowing external code to get a reference to the keyGroup 

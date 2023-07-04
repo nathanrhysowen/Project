@@ -13,7 +13,7 @@ export default class Piano {
 
     getKeyBeingPlayed(input){
       let flatKey = this.flatKeys.find((key) => key.input === input);
-      let naturalKey = this.naturalKeys.find(key => key.input === input);
+      let naturalKey = this.naturalKeys.find((key) => key.input === input);
       return flatKey || naturalKey || undefined;
     }
 
@@ -25,39 +25,37 @@ export default class Piano {
       console.log(input);
     }
 
-    isValidKey(input) {}
+    
 
     
 
     addFlatKeys(){
-        let flatKeys = [
-            {name: 'Db4', input: 'w' , xOffset: 5 },
-            {name: 'Eb4', input: 'e' , xOffset: 15 },
-            {name: 'Gb4', input: 't' , xOffset: 35 },
-            {name: 'Ab4', input: 'y' , xOffset: 45 },
-            {name: 'Bb4', input: 'u' , xOffset: 55 },
-            
-        ];
+         this.flatKeys = [
+           new Key( 'Db4', 'w' , 5 ),
+           new Key( 'Eb4', 'e' , 15 ),
+           new Key( 'Gb4', 't' , 35 ),
+           new Key( 'Ab4', 'y' , 45 ),
+           new Key( 'Bb4', 'u' , 55 ),
+         ];
 
-        flatKeys.forEach((flatKey) => {
-            let key = new Key(flatKey.name, flatKey.xOffset);
-            this.pianoGroup.add(key.getKeyGroup());
+        this.flatKeys.forEach((flatKey) => {
+            this.pianoGroup.add(flatKey.getKeyGroup());
         });
     }
 
     addNaturalKeys() {
-      let naturalKeys =  [
-        {name: 'C4', input: 'a' , xOffset: 0},
-        {name: 'D4', input: 's' , xOffset: 10},
-        {name: 'E4', input: 'd' , xOffset: 20},
-        {name: 'F4', input: 'f' , xOffset: 30},
-        {name: 'G4', input: 'g' , xOffset: 40},
-        {name: 'A4', input: 'h' , xOffset: 50},
-        {name: 'B4', input: 'j' , xOffset: 60},
+      this.naturalKeys =  [
+        new Key( 'C4' , 'a' , 0),
+        new Key( 'D4' , 's' , 10),
+        new Key( 'E4' , 'd' , 20),
+        new Key( 'F4' , 'f' , 30),
+        new Key( 'G4' , 'g' , 40),
+        new Key( 'A4' , 'h' , 50),
+        new Key( 'B4' , 'j' , 60),
       ];
-      naturalKeys.forEach((naturalKey) => {
-        let key = new Key(naturalKey.name, naturalKey.xOffset);
-        this.pianoGroup.add(key.getKeyGroup());
+      
+      this.naturalKeys.forEach((naturalKey) => {
+        this.pianoGroup.add(naturalKey.getKeyGroup());
       });
       
     }
