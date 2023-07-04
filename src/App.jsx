@@ -1,7 +1,8 @@
 import { useEffect } from 'react';
 
 import * as THREE from 'three';
-
+import React from 'react';
+import ReactDOM from 'react-dom';
 import SceneInit from './lib/SceneInit';
 import Piano from "./lib/Piano"
 
@@ -22,7 +23,7 @@ function App() {
         return;
       }
        p.pressKey(event.key);
-       
+       console.log('h');
     };
 
     let onKeyUp = (event) => {
