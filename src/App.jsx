@@ -16,6 +16,21 @@ function App() {
 
 
     test.scene.add(p.getPianoGroup());
+
+    let onKeyDown = (event) => {
+      if(event.repeat){
+        return;
+      }
+       p.pressKey(event.key);
+       
+    };
+
+    let onKeyUp = (event) => {
+      console.log('h');
+   };
+
+    window.addEventListener('keydown' , onKeyDown);
+    window.addEventListener('onkeyup' , onKeyUp );
   }, []);
   return (
     <div>
