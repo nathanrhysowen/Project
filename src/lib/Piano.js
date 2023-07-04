@@ -11,23 +11,28 @@ export default class Piano {
 
     }
 
-    getKeyBeingPlayed(input){
+    validKey(input){
       let flatKey = this.flatKeys.find((key) => key.input === input);
       let naturalKey = this.naturalKeys.find((key) => key.input === input);
       return flatKey || naturalKey || undefined;
     }
 
+    releaseKey(input){
+      let validKey = this.validKey(input);
+      if (validKey !== undefined) {
+        validKey.releaseKey();
+      }
+    }
+    
+
     pressKey(input) {
-      let keyBeingPlayed = this.getKeyBeingPlayed(input);
-      if (keyBeingPlayed !== undefined) {
-        keyBeingPlayed.playNote();
+      let validKey = this.validKey(input);
+      if (validKey !== undefined) {
+        validKey.playKey();
       }
       console.log(input);
     }
 
-    
-
-    
 
     addFlatKeys(){
          this.flatKeys = [

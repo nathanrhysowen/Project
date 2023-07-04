@@ -26,11 +26,18 @@ function App() {
     };
 
     let onKeyUp = (event) => {
+      p.releaseKey(event.key);
       console.log('h');
    };
 
-    window.addEventListener('keydown' , onKeyDown);
-    window.addEventListener('onkeyup' , onKeyUp );
+    
+
+    return () => {
+      window.removeEventListener('keydown' , onKeyDown);
+      window.removeEventListener('keyup' , onKeyUp );
+
+    };
+
   }, []);
   return (
     <div>
